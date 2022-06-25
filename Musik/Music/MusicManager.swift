@@ -18,12 +18,12 @@ class MusicManager {
     func loadMusic() {
         let urlList = Bundle.main.urls(forResourcesWithExtension: "mp3", subdirectory: nil) ?? []
         
-        for (_, url) in urlList.enumerated() {
+        for (i, url) in urlList.enumerated() {
             let item = AVPlayerItem(url: url)
             
             let title = item.loadMetaData().title
             let singer = item.loadMetaData().singer
-            songDataList.append(MusicData(title ?? "", singer ?? "", item, url.pathComponents[url.pathComponents.count - 1]))
+            songDataList.append(MusicData(index: i, title ?? "", singer ?? "", item, url.pathComponents[url.pathComponents.count - 1]))
         }
     }
         
